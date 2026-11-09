@@ -60,7 +60,7 @@
 .sloganContainer::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(0 0 0 / .75); }
 .battery { padding: calc(180 * var(--u) + var(--section-padding-extra)) 24px var(--section-padding-extra); }
 .batteryImage { width: calc(856 * var(--u)); height: calc(315 * var(--u)); max-width: 100%; object-fit: contain; }
-.exAi { gap: calc(48 * var(--u)); padding: calc(180 * var(--u) + var(--section-padding-extra)) 24px calc(240 * var(--u) + var(--section-padding-extra)); }
+.exAi { gap: calc(48 * var(--u)); padding: 200px 24px; }
 .exAiVideo { width: calc(300 * var(--u)); height: calc(300 * var(--u)); margin-bottom: calc(-32 * var(--u)); object-fit: contain; }
 .exAi > .subtitle, .exAi > p.copy { width: calc(800 * var(--u)); max-width: 100%; }
 .exAi > .subtitle { font-size: calc(48 * var(--u)); }
@@ -131,7 +131,7 @@
     .sloganContainer { height: auto; min-height: 560px; padding: 48px 24px; border-radius: 24px; }
     .battery { padding-top: calc(72px + var(--section-padding-extra)); }
     .batteryImage { width: 100%; height: auto; margin-top: 16px; }
-    .exAi { gap: 32px; padding: calc(96px + var(--section-padding-extra)) 24px; }
+    .exAi { gap: 32px; padding: 200px 24px; }
     .exAiVideo { width: 240px; height: 240px; margin-bottom: calc(-64px / 3); }
     .exAi > .subtitle { width: 100%; font-size: 32px; }
     .info { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: calc(64px + var(--section-padding-extra)) 24px; }
