@@ -1,0 +1,55 @@
+<section class="carousel" id="carousel" aria-labelledby="carousel-title" aria-roledescription="캐러셀">
+    <h2 class="subtitle sectionTitleLarge" id="carousel-title">헬스 케어의 새로운 세대</h2>
+    <div class="carouselTrack" data-carousel-track tabindex="0" aria-label="제품 특징 카드">
+        <article class="carouselCard carouselCard--sensor" data-carousel-slide aria-label="1 / 4 · 근육 센서">
+            <img class="carouselImage" src="./assets/figma/carousel-sensor.png" alt="고정밀 센서가 적용된 EX Suit의 뒷모습" loading="lazy">
+            <div class="carouselTextBox">
+                <p class="copy">운동 성과를 감으로 판단하지 않습니다.<br> EX Suit를 통해 근육을 읽고,<br> 자세와 자극을 더 정확하게<br> 점검할 수 있습니다.</p>
+            </div>
+        </article>
+        <article class="carouselCard carouselCard--fabric" data-carousel-slide aria-label="2 / 4 · 맞춤 운동 경험">
+            <img class="carouselImage" src="./assets/figma/carousel-fabric.png" alt="실내에서 함께 운동하는 세 사람" loading="lazy">
+            <div class="carouselTextBox">
+                <p class="copy">사람마다 다른 근육 사용 패턴과 운동 기록을 바탕으로<br> 사용자에게 맞는 운동 경험을 만들어갑니다.</p>
+            </div>
+        </article>
+        <article class="carouselCard carouselCard--battery" data-carousel-slide aria-label="3 / 4 · 간편한 충전">
+            <img class="carouselImage" src="./assets/figma/carousel-battery.png" alt="EX Device와 EX Dock 충전 구성" loading="lazy">
+            <div class="carouselTextBox">
+                <p class="copy">한 번의 충전으로 12시간 연속 측정합니다.<br> 운동이 끝난 뒤 Core를 Dock에 올려두는 것만으로 간편하게 충전할 수 있습니다.</p>
+            </div>
+        </article>
+        <article class="carouselCard carouselCard--watch" data-carousel-slide aria-label="4 / 4 · 스마트워치 연결">
+            <img class="carouselImage" src="./assets/figma/carousel-watch.png" alt="스마트폰에서 ALIGNEX 운동 화면을 확인하는 모습" loading="lazy">
+            <div class="carouselTextBox">
+                <p class="copy">ALIGNEX를 중심으로<br> iOS와 Android를 지원합니다.<br> Smart Watch에서 수집한 데이터를 활용해<br> 입체적인 운동 경험을 제공합니다.</p>
+            </div>
+        </article>
+    </div>
+    <div class="carouselControls" aria-label="제품 특징 재생 제어">
+        <div class="playbackIndicators" role="group" aria-label="제품 특징 선택">
+            <button class="playbackIndicator is-active" type="button" data-carousel-dot="0" aria-label="근육 센서 보기" aria-current="true">
+                <span class="playbackIndicatorTrack" aria-hidden="true"><span class="playbackIndicatorFill"></span></span>
+            </button>
+            <button class="playbackIndicator" type="button" data-carousel-dot="1" aria-label="맞춤 운동 경험 보기" aria-current="false">
+                <span class="playbackIndicatorTrack" aria-hidden="true"><span class="playbackIndicatorFill"></span></span>
+            </button>
+            <button class="playbackIndicator" type="button" data-carousel-dot="2" aria-label="간편한 충전 보기" aria-current="false">
+                <span class="playbackIndicatorTrack" aria-hidden="true"><span class="playbackIndicatorFill"></span></span>
+            </button>
+            <button class="playbackIndicator" type="button" data-carousel-dot="3" aria-label="스마트워치 연결 보기" aria-current="false">
+                <span class="playbackIndicatorTrack" aria-hidden="true"><span class="playbackIndicatorFill"></span></span>
+            </button>
+        </div>
+        <button class="playbackButton" type="button" data-carousel-toggle aria-label="일시정지" title="일시정지" aria-pressed="false">
+            <span class="playbackPauseIcon" aria-hidden="true"></span>
+            <span class="playbackPlayIcon" aria-hidden="true" hidden></span>
+            <span class="playbackRestartIcon" aria-hidden="true" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                    <path d="M3 12a9 9 0 1 0 2.64-6.36L3 8M3 3v5h5" />
+                </svg>
+            </span>
+        </button>
+        <span class="playbackStatus" role="status" data-carousel-status></span>
+    </div>
+</section>

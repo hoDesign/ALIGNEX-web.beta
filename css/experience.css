@@ -1,0 +1,19 @@
+/* 페이지: 제품 경험 히어로 */
+.experiencePage { background: #000; }
+.experiencePage .siteNav { color: #fff; }
+.experiencePage .navActions img { filter: brightness(0) invert(1); }
+.experiencePage .mainpage { height: 100vh; min-height: 0; padding: 0; align-items: center; }
+.experiencePage .heroRow { position: absolute; inset: 0; display: block; }
+.experiencePage .heroText { position: absolute; top: 50%; left: calc(180 * var(--u)); width: calc(900 * var(--u)); transform: translateY(-50%); gap: calc(12 * var(--u)); }
+.experiencePage .heroTitle { color: var(--accent); font-size: calc(80 * var(--u)); font-weight: 800; line-height: 1.5; }
+.experiencePage .heroCopy { max-width: 100%; color: #fff; font-size: calc(30 * var(--u)); line-height: 1.5; }
+.experiencePage .heroActions { position: absolute; left: calc(180 * var(--u)); top: 80.185185%; }
+
+/* 페이지: 모바일 제품 경험 */
+@media (max-width: 767px) {
+    .experiencePage .sectionBackground { object-position: 58% center; }
+    .experiencePage .heroText { top: auto; right: 28px; bottom: 180px; left: 28px; width: auto; transform: none; gap: 20px; }
+    .experiencePage .heroTitle { font-size: 52px; line-height: 1.2; }
+    .experiencePage .heroCopy { font-size: 20px; }
+    .experiencePage .heroActions { top: auto; bottom: 72px; left: 28px; }
+}

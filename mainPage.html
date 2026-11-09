@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- 공통: documentHead -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="나에게 맞는 운동을 제안하는 ALIGNEX. 일상복처럼 간편한 기기와 맞춤 운동 경험을 만나보세요.">
+    <title>ALIGNEX — 나를 위한 운동</title>
+    <!-- 공통: 스타일 및 동작 -->
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/sections.css">
+    <link rel="stylesheet" href="./css/mainPage.css">
+    <script src="./js/components.js" defer></script>
+    <script src="./js/membrane-shader.js" defer></script>
+    <script src="./js/membrane-background.js" defer></script>
+    <script src="./js/mainPage.js" defer></script>
+</head>
+<!-- /공통: documentHead -->
+<body class="mainPage">
+    <a class="skipLink" href="#main-content">본문으로 건너뛰기</a>
+    <!-- 공통: siteNav -->
+    <nav class="siteNav" aria-label="주 메뉴">
+        <a class="brand" href="./mainPage.html" aria-current="page"><span class="brandMark" aria-hidden="true"><img src="./assets/brand-symbol.png" alt=""></span><span>ALIGNEX</span></a>
+        <ul class="submenu">
+            <li><a href="./mainPage.html#comfort">health function</a></li>
+            <li><a href="./experience.html">experience</a></li>
+            <li><a href="./purchase.html">purchase</a></li>
+            <li><a href="./application.html">application</a></li>
+        </ul>
+        <div class="navActions">
+            <a href="./purchase.html" aria-label="장바구니"><img src="./assets/shopping-cart.svg" alt=""></a>
+            <a href="./application.html" aria-label="내 계정"><img src="./assets/account.svg" alt=""></a>
+        </div>
+    </nav>
+    <!-- /공통: siteNav -->
+    <main id="main-content">
+        <!-- 공통: hero -->
+        <section class="mainpage sectionViewport" id="mainpage" aria-labelledby="main-title">
+            <img src="./img/JPG/인물클로즈업.jpg" alt="" class="sectionBackground" fetchpriority="high">
+            <div class="heroRow">
+                <div class="heroText">
+                    <h1 class="heroTitle" id="main-title">ALIGNEX</h1>
+                    <p class="heroCopy">헬스케어의 새로운 패러다임</p>
+                </div>
+                <div class="heroActions">
+                    <a class="purchaseButton button" href="./purchase.html">구입하기</a>
+                    <a class="downloadButton button" href="./application.html">다운로드</a>
+                </div>
+            </div>
+        </section>
+        <!-- /공통: hero -->
+
+        <!-- 페이지: comfort -->
+        <section class="comfort sectionViewport" id="comfort" aria-labelledby="comfort-title">
+            <img src="./img/JPG/러닝04.jpg" alt="ALIGNEX를 착용하고 달리는 모습" class="comfortImage">
+            <article class="mockupGIFSection">
+                <div class="mockupVideo">
+                    <video muted loop playsinline preload="metadata" data-ambient-video aria-label="ALIGNEX 제품 영상">
+                        <source src="./img/ALIGNEX_Product_600x600.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="text">
+                    <h2 class="subtitle" id="comfort-title">일상복처럼 간편하게</h2>
+                    <p class="copy">어떤 환경과 자세에서도<br>불편함 없이 부드럽게 감싸줍니다.</p>
+                </div>
+            </article>
+        </section>
+        <!-- /페이지: comfort -->
+
+        <!-- 페이지: process -->
+        <section class="process sectionViewport" id="process" aria-labelledby="process-title" tabindex="-1">
+            <video class="processVideo" muted loop playsinline preload="metadata" aria-label="ALIGNEX 운동 동작 영상">
+                <source src="./img/필라테스 레그레이즈 업스케일링.mp4" type="video/mp4">
+            </video>
+            <h2 class="title processTitle" id="process-title">당신의 건강을 책임질 새로운 프로세스</h2>
+            <button class="motionSkip" type="button" data-process-skip>연출 건너뛰기</button>
+        </section>
+        <!-- /페이지: process -->
+
+        <!-- 페이지: values -->
+        <section class="values" id="values" aria-label="ALIGNEX의 세 가지 역할">
+            <div class="valuesStage sectionViewport">
+                <article class="valuePanel value01 is-active" id="value-panel-1" aria-hidden="false">
+                    <img src="./img/JPG/배경03.jpg" alt="">
+                    <h2 class="hero">ALIGNEX는 나만의<br>맞춤형 트레이너이자</h2>
+                </article>
+                <article class="valuePanel value02" id="value-panel-2" aria-hidden="true">
+                    <!-- values 배경: 기존 콘텐츠를 보존하는 독립 레이어 -->
+                    <div class="membraneBackground" data-membrane-background aria-hidden="true">
+                        <picture class="membraneFallback">
+                            <source media="(max-width: 767px)" srcset="./assets/membrane-static-mobile.webp">
+                            <img src="./assets/membrane-static.webp" alt="" loading="lazy">
+                        </picture>
+                        <canvas class="membraneCanvas"></canvas>
+                    </div>
+                    <video muted loop playsinline preload="metadata" data-value-video aria-label="자세 분석 그래픽 영상">
+                        <source src="./assets/values-orb.mp4" type="video/mp4">
+                    </video>
+                    <h2 class="hero">자세를 바로잡는<br>AI분석 시스템이며</h2>
+                </article>
+                <article class="valuePanel value03" id="value-panel-3" aria-hidden="true">
+                    <img src="./img/JPG/러닝01.jpg" alt="">
+                    <h2 class="hero">성장을 기록하는<br>운동 플래너입니다</h2>
+                </article>
+                <!-- values: 진행률 및 재생 제어 -->
+                <div class="valuesControls">
+                    <div class="playbackIndicators" role="group" aria-label="ALIGNEX 역할 선택">
+                        <button class="playbackIndicator is-active" type="button" data-values-panel="0" aria-controls="value-panel-1" aria-current="true" aria-label="1번 장면: 맞춤형 트레이너">
+                            <span class="playbackIndicatorTrack" aria-hidden="true"><span class="playbackIndicatorFill"></span></span>
+                        </button>
+                        <button class="playbackIndicator" type="button" data-values-panel="1" aria-controls="value-panel-2" aria-current="false" aria-label="2번 장면: AI 분석 시스템">
+                            <span class="playbackIndicatorTrack" aria-hidden="true"><span class="playbackIndicatorFill"></span></span>
+                        </button>
+                        <button class="playbackIndicator" type="button" data-values-panel="2" aria-controls="value-panel-3" aria-current="false" aria-label="3번 장면: 운동 플래너">
+                            <span class="playbackIndicatorTrack" aria-hidden="true"><span class="playbackIndicatorFill"></span></span>
+                        </button>
+                    </div>
+                    <button class="playbackButton" type="button" data-values-toggle aria-pressed="false" aria-label="일시정지" title="일시정지">
+                        <span class="playbackPauseIcon" aria-hidden="true"></span>
+                        <span class="playbackPlayIcon" aria-hidden="true" hidden></span>
+                        <span class="playbackRestartIcon" aria-hidden="true" hidden>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                <path d="M3 12a9 9 0 1 0 2.64-6.36L3 8M3 3v5h5" />
+                            </svg>
+                        </span>
+                    </button>
+                    <span class="playbackStatus" role="status" data-values-status></span>
+                </div>
+            </div>
+        </section>
+        <!-- /페이지: values -->
+
+        <!-- 공통: persona -->
+        <section class="persona sectionViewport" id="persona" aria-label="나에게 맞는 운동 경험">
+            <div class="personaStage">
+                <div class="personaButtons">
+                    <button type="button" class="questionButton button01" data-panel="persona01" aria-controls="persona01" aria-pressed="false">
+                        <img src="./img/PNG/+button.png" alt="" class="buttonIcon">
+                        <span class="buttonCopy">이 기구 어떻게 쓰는거죠?</span>
+                    </button>
+        
+                    <button type="button" class="questionButton button02" data-panel="persona02" aria-controls="persona02" aria-pressed="false">
+                        <img src="./img/PNG/+button.png" alt="" class="buttonIcon">
+                        <span class="buttonCopy">오늘 운동은 뭐하지?</span>
+                    </button>
+        
+                    <button type="button" class="questionButton button03" data-panel="persona03" aria-controls="persona03" aria-pressed="false">
+                        <img src="./img/PNG/+button.png" alt="" class="buttonIcon">
+                        <span class="buttonCopy">우리 헬스장은 이거 없는데..</span>
+                    </button>
+        
+                    <button type="button" class="questionButton button04" data-panel="persona04" aria-controls="persona04" aria-pressed="false">
+                        <img src="./img/PNG/+button.png" alt="" class="buttonIcon">
+                        <span class="buttonCopy">오늘 강도 좀 높여봐?</span>
+                    </button>
+                </div>
+                <div class="personaContent" aria-live="polite" aria-atomic="true">
+                    <div class="personaPanel personaDefault is-active" id="persona-default">
+                        <img src="./img/JPG/러닝02.jpg" alt="오롯이 나를 위한 운동" class="personaBackground">
+                        <div class="personaTextBox">
+                            <h2 class="title">오롯이 나를 위한 운동</h2>
+                            <p class="copy">
+                                나의 운동 수준과 목표, 쌓이는 운동 기록을 기반으로<br>
+                                <span class="highlight">AI가 나에게 맞는 운동 방향을 제안</span>합니다.<br>
+                                처음 시작하는 날부터 새로운 목표에 도전하는 날까지,<br>
+                                당신을 위한 맞춤 어플리케이션으로 <span class="highlight">나를 위한 운동</span>을 시작하세요.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="personaPanel persona01" id="persona01" hidden>
+                        <img src="./img/JPG/휴대폰01.jpg" alt="이 기구 어떻게 쓰는거죠?" class="personaBackground">
+                        <div class="personaTextBox">
+                            <h2 class="title">Just Do It!</h2>
+                            <p class="copy">
+                                설명만으로 이해하기 어려웠던 운동도<br>
+                                동작 예시와 함께 주어지는 팁으로<br>
+                                차근차근 따라하세요. 운동 기구의 <span class="highlight">사용법</span>과<br>
+                                시작하는 <span class="highlight">자세</span>부터 움직이는 순서까지,<br>
+                                <span class="highlight">처음 접하는 운동을 할 때</span> 필요한 정보를 제공합니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="personaPanel persona02" id="persona02" hidden>
+                        <div class="personaVisual">
+                            <img src="./assets/persona-schedule.png" alt="오늘 운동은 뭐하지?" class="personaMockup mockup01">
+                            <img src="./assets/persona-workout.png" alt="오늘 운동은 뭐하지?" class="personaMockup mockup02">
+                        </div>
+                        <div class="personaTextBox">
+                            <h2 class="title">오늘 운동은 뭐하지?</h2>
+                            <p class="copy">
+                                운동할 요일과 시간을 정하고 다가오는<br>
+                                <span class="highlight">일정과 루틴을 한눈에 확인</span>합니다.<br>
+                                오늘 <span class="highlight">운동하지 못하면</span> EX AI가<br>
+                                <span class="highlight">루틴을 유연하게 조절</span>하며 어떤 운동이<br>
+                                필요한지 고민할 스트레스를 줄여줍니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="personaPanel persona03" id="persona03" hidden>
+                        <div class="personaVisual">
+                            <img src="./assets/persona-body.png" alt="원하는 부위부터, 지금 사용하는 기구까지" class="personaMockup mockup01">
+                            <img src="./assets/persona-recommendations.png" alt="원하는 부위부터, 지금 사용하는 기구까지" class="personaMockup mockup02">
+                        </div>
+                        <div class="personaTextBox">
+                            <h2 class="title">원하는 부위부터,<br>지금 사용하는 기구까지</h2>
+                            <p class="copy">
+                                운동하고 싶은 부위를 EX AI에게 맡기면<br>
+                                <span class="highlight">다양한 운동을 제시</span>합니다.<br>
+                                낯선 운동의 이름을 모두 알지 못해도,<br>
+                                직관적인 동작 애니메이션으로 운동을 추천합니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="personaPanel persona04" id="persona04" hidden>
+                        <div class="personaVisual">
+                            <div class="personaMockup mockup01"><img src="./assets/persona-levelup-phone.png" alt="LEVEL UP! 운동 화면"></div>
+                            <img src="./img/PNG/착용 측면.png" alt="LEVEL UP!" class="personaMockup mockup02">
+                        </div>
+                        <div class="personaTextBox">
+                            <h2 class="title">LEVEL UP!</h2>
+                            <p class="copy">
+                                내 컨디션에 따라 오늘은 <span class="highlight">더 강하게!</span> <span class="dimmed">더 약하게..</span><br>
+                                EX AI가 <span class="highlight">쉽고 빠르게 강도를 조절</span>합니다.<br>
+                                조절하고 싶은 세트, 반복 횟수를 같이
+                                루틴의 구성을 편집해 운동 방식을 설계합니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /공통: persona -->
+
+        <!-- 공통: smartphone -->
+        <section class="smartphone" id="smartphone" aria-labelledby="smartphone-title">
+            <div class="smartphoneVisual"><img src="./assets/persona-workout.png" alt="ALIGNEX 운동 세트 확인 화면" loading="lazy"></div>
+            <div class="text">
+                <h2 class="subtitle gradientAnimation" id="smartphone-title">스마트폰 하나로, 시작을 더 가볍게</h2>
+                <p class="copy">
+                    당신의 운동 의지를 불태울 시작을 돕습니다.<br>
+                    <span class="highlight">스마트폰</span>과 <span class="highlight">몸</span>, <span class="highlight">ALIGNEX</span>만 있다면 <span class="highlight">어떤 운동이든 시작할 수 있습니다.</span><br>
+                    집에서도, 헬스장에서도 바로 ALIGNEX와 함께 시작하세요.
+                </p>
+            </div>
+        </section>
+        <!-- /공통: smartphone -->
+    </main>
+    <!-- 공통: siteFooter -->
+    <footer class="siteFooter">
+        <p class="footerLogo">ALIGNEX</p>
+        <ul class="footerMenu">
+            <li>
+                <p class="footerTitle">회사소개</p>
+                <ul class="footerGroup">
+                    <li><a href="#">회사 소개</a></li>
+                    <li><a href="#">임상 및 과학 전문가</a></li>
+                    <li><a href="#">뉴스룸</a></li>
+                    <li><a href="#">채용</a></li>
+                </ul>
+            </li>
+            <li>
+                <p class="footerTitle">지원</p>
+                <ul class="footerGroup">
+                    <li><a href="./purchase.html">구매</a></li>
+                    <li><a href="#">내 주문</a></li>
+                    <li><a href="./purchase.html#purchase-form">사이즈 안내</a></li>
+                    <li><a href="./application.html">어플리케이션</a></li>
+                    <li><a href="#">문의</a></li>
+                </ul>
+            </li>
+            <li>
+                <p class="footerTitle">파트너십</p>
+                <ul class="footerGroup">
+                    <li><a href="#">인플루언서</a></li>
+                    <li><a href="#">개발</a></li>
+                </ul>
+            </li>
+            <li>
+                <p class="footerTitle">SNS</p>
+                <ul class="footerGroup">
+                    <li><a href="#">회사 소개</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Threads</a></li>
+                    <li><a href="#">X</a></li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
+    <!-- /공통: siteFooter -->
+</body>
+</html>

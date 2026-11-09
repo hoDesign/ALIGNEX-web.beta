@@ -1,0 +1,96 @@
+/* 페이지: 구매 옵션 */
+.purchasePage {
+    --purchase-bg: #f8f6f9;
+    --purchase-text: #111;
+    --purchase-muted: #737378;
+    --purchase-border: #d2d2d7;
+    --purchase-accent: #0073eb;
+    background: var(--purchase-bg);
+}
+.purchase, .purchaseDialog { color: var(--purchase-text); font-family: Pretendard, sans-serif; line-height: 1.5; }
+.purchase { position: relative; min-height: calc(998 * var(--u) + var(--section-padding-extra) * 2 - 120px); padding-block: calc(var(--section-padding-extra) - 60px); padding-inline: calc(180 * var(--u)); }
+.purchaseIntro { position: absolute; z-index: 1; top: calc(30 * var(--u) + var(--section-padding-extra) - 60px); left: calc(180 * var(--u)); }
+.purchase .purchaseTitle { margin: 0; font-size: calc(40 * var(--u)); font-weight: 700; line-height: 1.3; letter-spacing: -.04em; }
+.purchase .purchaseStartingPrice { margin: 0; color: var(--purchase-text); font-size: calc(20 * var(--u)); line-height: 1.5; }
+.purchaseLayout { display: grid; grid-template-columns: minmax(0, 1020fr) minmax(0, 480fr); gap: calc(60 * var(--u)); min-height: calc(938 * var(--u)); padding-block: calc(19 * var(--u)); align-items: stretch; }
+.purchaseVisual { display: grid; place-items: center; min-width: 0; min-height: calc(900 * var(--u)); margin: 0; padding: calc(103 * var(--u)); border-radius: calc(32 * var(--u)); background: var(--purchase-bg); }
+.purchaseImage { display: block; width: 100%; height: calc(610 * var(--u)); object-fit: contain; }
+.purchaseImageFallback { padding: 36px; border: 1px dashed var(--purchase-border); color: var(--purchase-muted); }
+.purchaseForm { display: flex; min-width: 0; flex-direction: column; align-items: stretch; justify-content: center; gap: calc(32 * var(--u)); margin: 0; padding: calc(32 * var(--u)) 0; }
+.purchaseStep { min-width: 0; margin: 0; padding: 0; border: 0; }
+.purchaseLabel { margin-bottom: calc(16 * var(--u)); padding: 0; font-size: calc(24 * var(--u)); font-weight: 600; line-height: 1.4; }
+.purchaseOptions { display: flex; flex-wrap: wrap; align-items: center; gap: calc(10 * var(--u)); }
+.purchaseOptions--stack { flex-direction: column; align-items: flex-start; }
+.purchaseOption { position: relative; display: inline-grid; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+/* 공통: 옵션 입력 접근성 */
+.purchaseOption input, .purchaseSrOnly { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; border: 0; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; }
+.purchaseOptionFace { display: grid; place-items: center; min-width: max(44px, calc(48 * var(--u))); min-height: max(44px, calc(48 * var(--u))); padding: 8px; border: 1px solid var(--purchase-border); border-radius: 50%; color: var(--purchase-text); background: transparent; font-size: max(16px, calc(16 * var(--u))); font-weight: 500; line-height: 1; transition: border-color 150ms, box-shadow 150ms, background-color 150ms; }
+.purchaseOption--pill .purchaseOptionFace { border-radius: 999px; padding-inline: max(22px, calc(22 * var(--u))); }
+.purchaseOption--preset { max-width: 100%; }
+.purchaseOption--preset.is-expanded { width: max(264px, calc(300 * var(--u))); }
+.purchaseOption--preset .purchaseOptionFace { overflow: clip; }
+.purchaseOption--preset.is-expanded .purchaseOptionFace { justify-items: start; gap: 10px; padding: 16px 18px; border-radius: 20px; text-align: left; }
+.purchasePackageDescription { display: none; color: var(--purchase-muted); font-size: 14px; font-weight: 400; line-height: 1.5; }
+.purchaseOption--preset.is-expanded .purchasePackageDescription { display: block; }
+.purchaseOption:hover .purchaseOptionFace { border-color: #909095; }
+.purchaseOption input:checked + .purchaseOptionFace { border-color: var(--purchase-accent); box-shadow: 0 0 0 1px var(--purchase-accent); }
+.purchaseOption input:focus-visible + .purchaseOptionFace { outline: 3px solid var(--purchase-accent); outline-offset: 4px; }
+.purchaseSwatch { border: 4px solid var(--purchase-bg); box-shadow: 0 0 0 1px var(--purchase-border); }
+.purchaseSwatch--carbon { background: #171719; }
+.purchaseSwatch--ceramic { background: #f0f0f2; }
+.purchaseOption input:checked + .purchaseSwatch { border-color: var(--purchase-bg); box-shadow: 0 0 0 2px var(--purchase-accent); }
+.purchaseCustom { width: max(240px, calc(240 * var(--u))); max-width: 100%; padding: 8px 12px; overflow: clip; border: 1px solid var(--purchase-accent); border-radius: 20px; box-shadow: 0 0 0 1px var(--purchase-accent); }
+.purchaseQuantity { display: grid; grid-template-columns: minmax(0, 1fr) 36px 40px 36px; align-items: center; min-height: 44px; font-size: max(14px, calc(16 * var(--u))); }
+.purchaseQuantity button { width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%; color: var(--purchase-muted); background: transparent; font: inherit; cursor: pointer; }
+.purchaseQuantity button:hover:not(:disabled) { color: var(--purchase-accent); background: rgb(0 115 235 / .06); }
+.purchaseQuantity button:disabled { opacity: .3; cursor: default; }
+.purchaseQuantity input { width: 100%; min-width: 0; padding: 4px 0; border: 0; border-radius: 4px; appearance: textfield; -moz-appearance: textfield; color: var(--purchase-text); background: transparent; font: inherit; text-align: center; }
+.purchaseQuantity input::-webkit-inner-spin-button, .purchaseQuantity input::-webkit-outer-spin-button { margin: 0; -webkit-appearance: none; }
+.purchaseQuantity :focus-visible { outline: 2px solid var(--purchase-accent); outline-offset: 2px; }
+.purchaseBar { display: grid; grid-template-columns: minmax(0, 1020fr) minmax(0, 480fr); gap: calc(60 * var(--u)); min-height: calc(60 * var(--u)); align-items: start; }
+.purchaseSummary { text-align: right; }
+.purchasePrice { margin: 0; font-size: calc(32 * var(--u)); font-weight: 700; line-height: 1.1; letter-spacing: -.03em; }
+.purchaseHint { margin: 8px 0 0; color: var(--purchase-muted); font-size: max(12px, calc(14 * var(--u))); }
+.purchaseActions { display: flex; gap: calc(10 * var(--u)); }
+.purchase .button, .purchaseDialog .button { display: inline-flex; align-items: center; justify-content: center; min-height: max(44px, calc(60 * var(--u))); min-width: 0; padding: 12px 24px; border: 1px solid var(--purchase-accent); border-radius: 999px; font: inherit; font-size: max(16px, calc(20 * var(--u))); font-weight: 500; cursor: pointer; }
+.purchaseActions .button { flex: 1; }
+.purchase .purchaseButton, .purchaseDialog .purchaseButton { background: var(--purchase-accent); color: #fff; }
+.purchase .purchaseCartButton { color: var(--purchase-text); background: transparent; border-color: var(--purchase-border); }
+.purchase .button:disabled { opacity: .4; cursor: not-allowed; }
+.purchase .button:focus-visible, .purchaseDialog .button:focus-visible { outline: 3px solid var(--purchase-accent); outline-offset: 4px; }
+.purchaseStep.is-revealing { animation: purchaseReveal 240ms ease-out both; }
+@keyframes purchaseReveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 페이지: 구매 선택 확인 */
+.purchaseDialog { width: min(560px, calc(100% - 40px)); padding: 32px; border: 0; border-radius: 20px; background: #fff; }
+.purchaseDialog::backdrop { background: rgb(0 0 0 / .4); }
+.purchaseDialog .title { margin-top: 0; font-size: 26px; line-height: 1.3; }
+.purchaseDialog .copy { font-size: 18px; }
+.purchaseDialog .button { margin-top: 24px; }
+
+/* 페이지: 모바일 구매 옵션 */
+@media (max-width: 900px) {
+    .purchase { min-height: 0; padding: calc(32px + var(--section-padding-extra) - 60px) 24px calc(48px + var(--section-padding-extra) - 60px); }
+    .purchaseIntro { position: relative; inset: auto; margin-bottom: 24px; }
+    .purchase .purchaseTitle { font-size: 30px; }
+    .purchase .purchaseStartingPrice { margin-top: 8px; font-size: 18px; }
+    .purchaseLayout { grid-template-columns: minmax(0, 1fr); gap: 0; min-height: 0; padding: 0; }
+    .purchaseVisual { min-height: 320px; padding: 24px; border-radius: 24px; }
+    .purchaseImage { height: min(420px, 75vw); }
+    .purchaseForm { gap: 28px; padding: 32px 0 40px; }
+    .purchaseLabel { margin-bottom: 12px; font-size: 22px; }
+    .purchaseOptions { gap: 10px; }
+    .purchaseCustom { width: 264px; }
+    .purchaseQuantity { grid-template-columns: minmax(0, 1fr) 44px 40px 44px; }
+    .purchaseQuantity button { width: 44px; height: 44px; }
+    .purchaseBar { grid-template-columns: minmax(0, 1fr); gap: 24px; min-height: 0; }
+    .purchaseSummary { text-align: left; }
+    .purchasePrice { font-size: 28px; }
+    .purchaseHint { font-size: 13px; }
+    .purchaseActions { width: 100%; gap: 12px; }
+    .purchase .button { min-height: 48px; padding-inline: 16px; font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .purchaseStep.is-revealing { animation: none; }
+    .purchaseOptionFace { transition: none; }
+}

@@ -1,0 +1,56 @@
+/* 메인 전용: 편안함 · 프로세스 · 가치 연출 */
+.mainPage .mainpage { height: 100vh; min-height: 0; }
+.mainPage .mainpage .heroTitle { line-height: 1; }
+.comfort { display: flex; align-items: center; justify-content: center; gap: calc(20 * var(--s)); padding: calc(90 * var(--s) + var(--section-padding-extra)) calc(180 * var(--s)); background: #f5f5f5; isolation: isolate; }
+/* 편안함: 스크롤에 따른 하단 암부 전환 */
+.comfort::after { content: ""; position: absolute; inset: auto 0 0; z-index: 2; height: calc(var(--exit-progress, 0) * 100%); background: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / .15) 25%, rgb(0 0 0 / .65) 65%, #000 100%); pointer-events: none; }
+.comfortImage { width: calc(940 * var(--s)); height: calc(770 * var(--s)); flex-shrink: 0; border-radius: calc(40 * var(--s)); object-fit: cover; }
+.mockupGIFSection { width: calc(600 * var(--s)); height: calc(770 * var(--s)); flex-shrink: 0; }
+.mockupVideo { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: calc(40 * var(--s)); background: #eee; }
+/* 제품 영상: 원본 상하 검은 여백을 카드 안에서 크롭 */
+.mockupVideo video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.25); transform-origin: center; }
+.mockupGIFSection .text { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: calc(170 * var(--s)); padding-top: calc(30 * var(--s)); text-align: center; }
+
+.process { display: grid; place-items: center; height: 100vh; margin-block: 120px; padding-block: 0; overflow: hidden; background: #000; }
+.processVideo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.processTitle { position: relative; z-index: 1; max-width: calc(1560 * var(--s)); padding-block: calc(12 * var(--s)); color: #e9eff7; font-size: calc(40 * var(--s)); font-weight: 700; line-height: 1.5; text-align: center; opacity: 0; }
+
+.values { position: relative; height: calc(300vh + var(--section-padding-extra) * 2); height: calc(300svh + var(--section-padding-extra) * 2); background: #000; }
+.valuesStage { position: sticky; top: 0; overflow: hidden; background: #000; }
+/* 가치 전환: PanelSwitcher가 패널 표시를 관리 */
+.valuePanel { position: absolute; inset: 0; overflow: hidden; opacity: 0; pointer-events: none; }
+.valuePanel.is-active { opacity: 1; }
+.valuePanel > img, .valuePanel > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.value01 > img { transform: translateX(120px); }
+.valuePanel > video { object-fit: contain; }
+.value02 > video { inset: auto; left: calc(1105 * var(--s)); top: 50%; width: calc(468 * var(--s)); height: calc(468 * var(--s)); transform: translateY(-50%) scale(.75); transform-origin: center; }
+.valuePanel.is-active > video[controls] { pointer-events: auto; }
+.valuePanel .hero { position: absolute; left: calc(480 * var(--s)); top: 50%; width: calc(620 * var(--s)); transform: translateY(-50%); color: #e9eff7; font-size: calc(56 * var(--s)); font-weight: 600; line-height: 1.3; letter-spacing: -.03em; }
+
+/* values: 흑백 막 배경. 기존 장면은 ?valuesBackground=original로 비교 */
+.value02 { isolation: isolate; }
+.membraneBackground { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #000; }
+.membraneFallback, .membraneFallback img, .membraneCanvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.membraneFallback img { object-fit: cover; }
+.membraneCanvas { opacity: 0; }
+.membraneBackground[data-renderer="webgl"] .membraneCanvas { opacity: 1; }
+.membraneBackground[data-mode="original"] { display: none; }
+.value02 > video { z-index: 1; mix-blend-mode: screen; }
+.value02 > .hero { z-index: 2; }
+
+/* values: 3000ms 진행률과 재생 제어 */
+.valuesControls { position: absolute; z-index: 5; bottom: max(32px, calc(48 * var(--s))); left: 50%; display: flex; align-items: center; gap: 16px; transform: translate(-50%, var(--values-controls-offset, 0px)); }
+.valuesControls.is-scroll-managed { translate: 0 32px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 360ms ease, translate 480ms cubic-bezier(.22, 1, .36, 1); }
+.valuesControls.is-scroll-managed.is-visible { translate: 0 0; opacity: 1; visibility: visible; }
+.valuesControls.is-scroll-managed.is-visible > * { pointer-events: auto; }
+
+
+@media (max-width: 767px) {
+    .comfort { height: auto; min-height: calc(100svh + var(--section-padding-extra) * 2); flex-direction: column; gap: 24px; padding: calc(64px + var(--section-padding-extra)) 24px; }
+    .comfortImage { width: 100%; height: 52vw; border-radius: 24px; }
+    .mockupGIFSection { width: min(100%, 460px); height: auto; }
+    .mockupVideo { border-radius: 24px; }
+    .mockupGIFSection .text { height: auto; padding-top: 24px; gap: 8px; }
+    .processTitle { max-width: calc(100% - 48px); font-size: 28px; }
+    .valuePanel .hero { left: 28px; width: calc(100% - 56px); font-size: 36px; }
+}

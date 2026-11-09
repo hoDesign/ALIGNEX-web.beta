@@ -1,0 +1,147 @@
+/* 공통: 제품 캐러셀 */
+.carousel { min-height: calc(1080 * var(--u) + var(--section-padding-extra) * 2); padding-block: 120px; overflow: hidden; background: #f7f7f7; color: var(--ink); }
+.carousel { position: relative; }
+.carousel::after { content: ""; position: absolute; inset: auto 0 0; z-index: 3; height: calc(var(--carousel-exit-progress, 0) * 100%); background: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / .15) 25%, rgb(0 0 0 / .65) 65%, #000 100%); pointer-events: none; }
+.carousel > .subtitle { margin: 0 calc(180 * var(--u)) calc(20 * var(--u)); font-size: var(--section-title-size); font-weight: 500; line-height: 1.5; letter-spacing: -.03em; }
+.carouselTrack { display: flex; gap: calc(40 * var(--u)); width: 100%; padding-inline: calc(180 * var(--u)); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: calc(180 * var(--u)); scrollbar-width: none; }
+.carouselTrack::-webkit-scrollbar { display: none; }
+.carouselCard { position: relative; flex: 0 0 calc(1556 * var(--u)); height: calc(700 * var(--u)); overflow: hidden; border-radius: calc(40 * var(--u)); scroll-snap-align: start; background: #ddd; isolation: isolate; }
+.carouselImage { position: absolute; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.carouselCard--fabric .carouselImage { top: -38.75%; height: 293.8%; }
+.carouselCard--battery .carouselImage { top: -20.58%; height: 141.15%; }
+.carouselCard--watch .carouselImage { top: -53.86%; left: -16.05%; width: 116.07%; height: 258%; }
+.carouselTextBox { position: absolute; z-index: 1; }
+.carouselCard p.copy { color: inherit; font-size: calc(24 * var(--u)); font-weight: 400; line-height: 1.35; letter-spacing: 0; word-break: keep-all; }
+.carouselCard--sensor { color: #191a1c; }
+.carouselCard--sensor .carouselTextBox { left: calc(60 * var(--u)); top: 50%; width: calc(403 * var(--u)); transform: translateY(-50%); }
+.carouselCard--fabric { color: #fff; }
+.carouselCard--fabric .carouselTextBox { bottom: calc(60 * var(--u)); left: 50%; width: calc(800 * var(--u)); transform: translateX(-50%); text-align: center; }
+.carouselCard--battery { color: #191a1c; }
+.carouselCard--battery .carouselTextBox { top: calc(60 * var(--u)); left: 50%; width: calc(1000 * var(--u)); transform: translateX(-50%); text-align: center; }
+.carouselCard--watch { color: #fff; }
+.carouselCard--watch .carouselTextBox { right: calc(60 * var(--u)); bottom: calc(60 * var(--u)); width: calc(700 * var(--u)); text-align: right; }
+.carouselControls { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 16px; height: 56px; margin-top: 24px; }
+/* 캐러셀 제어: 화면 하단에서 등장한 뒤 카드 아래 원래 위치에 안착 */
+.carouselControls.is-scroll-managed { transform: translateY(var(--controls-offset, 0px)); translate: 0 32px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 360ms ease, translate 480ms cubic-bezier(.22, 1, .36, 1); }
+.carouselControls.is-scroll-managed.is-visible { translate: 0 0; opacity: 1; visibility: visible; }
+.carouselControls.is-scroll-managed.is-visible > * { pointer-events: auto; }
+
+/* 공통: 제품 구성 */
+.productSet { height: calc(600 * var(--u) + var(--section-padding-extra) * 2); padding-top: var(--section-padding-extra); background: #f7f7f7; text-align: center; }
+.productSet > .subtitle { margin-bottom: calc(20 * var(--u)); color: #191a1c; font-size: calc(40 * var(--u)); font-weight: 700; line-height: 1.3; }
+.productSetVisual { position: relative; width: calc(1208 * var(--u)); height: calc(400 * var(--u)); margin-inline: auto; border-radius: calc(20 * var(--u)); background: #f6f5f880; }
+.productSetVisual > figure { position: absolute; inset: 0; margin: 0; pointer-events: none; }
+.productSetVisual > figure > img { position: absolute; max-width: none; object-fit: contain; }
+.productSetSuit > img { left: calc(153 * var(--u)); top: calc(47 * var(--u)); width: calc(282 * var(--u)); height: calc(282 * var(--u)); }
+.productSetDevice > img { left: calc(563 * var(--u)); top: calc(125 * var(--u)); width: calc(83 * var(--u)); height: calc(150 * var(--u)); }
+.productSetDock > img { left: calc(822.533 * var(--u)); top: calc(108.648 * var(--u)); width: calc(104.092 * var(--u)); height: calc(194.352 * var(--u)); }
+.productSetVisual figcaption { position: absolute; top: calc(359 * var(--u)); transform: translateX(-50%); font-size: calc(14 * var(--u)); font-weight: 500; line-height: 1.5; }
+.productSetSuit figcaption { left: calc(293.5 * var(--u)); }
+.productSetDevice figcaption { left: calc(603 * var(--u)); }
+.productSetDock figcaption { left: calc(875 * var(--u)); }
+.productSetCable { position: absolute; left: calc(817 * var(--u)); width: calc(115 * var(--u)); height: calc(31 * var(--u)); overflow: hidden; }
+.productSetCable--top { top: calc(1 * var(--u)); }
+.productSetCable--middle { top: calc(32 * var(--u)); }
+.productSetCable--bottom { top: calc(63 * var(--u)); width: calc(115.159 * var(--u)); height: calc(45.649 * var(--u)); }
+.productSetCable img { position: absolute; left: -187.66%; top: -.13%; width: 297.3%; height: 431.71%; max-width: none; }
+.productSetCable--bottom img { left: -187.4%; top: -.09%; width: 296.89%; height: 293.17%; }
+
+/* 공통: 제품 설명 */
+.bluetooth, .slogan, .battery, .exAi { display: flex; flex-direction: column; align-items: center; background: #000; color: #fff; text-align: center; }
+.bluetooth .text, .slogan .text, .battery .text { display: flex; flex-direction: column; align-items: center; gap: calc(32 * var(--u)); width: calc(800 * var(--u)); max-width: 100%; }
+.bluetooth .subtitle, .slogan .subtitle, .battery .subtitle, .exAi .subtitle { width: 100%; color: #fff; font-size: var(--section-title-size, calc(40 * var(--u))); font-weight: 800; line-height: 1.35; letter-spacing: 0; }
+.bluetooth p.copy, .slogan p.copy, .battery p.copy, .exAi p.copy, .smartWatch p.copy { width: 100%; color: rgb(255 255 255 / .5); font-size: calc(24 * var(--u)); font-weight: 400; line-height: 1.35; letter-spacing: 0; }
+.bluetooth .highlight, .slogan .highlight, .battery .highlight, .exAi .highlight { color: #fff; }
+.bluetooth { padding: calc(240 * var(--u) + var(--section-padding-extra)) 24px calc(180 * var(--u) + var(--section-padding-extra)); }
+.bluetoothImage { position: relative; width: calc(324 * var(--u)); height: calc(59 * var(--u)); margin-top: calc(64 * var(--u)); }
+.slogan { padding-inline: calc(60 * var(--u)); }
+.sloganContainer { position: relative; display: grid; place-items: center; width: 100%; height: calc(800 * var(--u)); overflow: hidden; border-radius: calc(40 * var(--u)); isolation: isolate; }
+.sloganContainer > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.sloganContainer::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(0 0 0 / .75); }
+.battery { padding: calc(180 * var(--u) + var(--section-padding-extra)) 24px var(--section-padding-extra); }
+.batteryImage { width: calc(856 * var(--u)); height: calc(315 * var(--u)); max-width: 100%; object-fit: contain; }
+.exAi { gap: calc(48 * var(--u)); padding: calc(180 * var(--u) + var(--section-padding-extra)) 24px calc(240 * var(--u) + var(--section-padding-extra)); }
+.exAiVideo { width: calc(300 * var(--u)); height: calc(300 * var(--u)); margin-bottom: calc(-32 * var(--u)); object-fit: contain; }
+.exAi > .subtitle, .exAi > p.copy { width: calc(800 * var(--u)); max-width: 100%; }
+.exAi > .subtitle { font-size: calc(48 * var(--u)); }
+.exAi > p.copy { width: max-content; word-break: keep-all; overflow-wrap: break-word; }
+
+/* 공통: 연결 다이어그램 */
+.connectionDiagram { position: absolute; top: 0; left: 50%; display: flex; align-items: center; gap: 30px; width: 324px; height: 59px; transform: translateX(-50%) scale(calc(100vw / 1920px)); transform-origin: top center; }
+.connectionDevice, .connectionAi { position: relative; display: grid; flex: 0 0 36px; place-items: center; width: 36px; height: 36px; }
+.connectionDevice { border: 3px solid #fff; border-radius: 4px; }
+.connectionDots { position: relative; flex: 0 0 48px; width: 48px; height: 8px; }
+.connectionBluetooth { position: relative; flex: 0 0 36px; width: 36px; height: 59px; }
+.connectionDiagram img { position: absolute; max-width: none; }
+.connectionDevice img { position: static; }
+.connectionBluetooth img { left: -3%; top: -7%; }
+.connectionAi img { left: -12.5%; top: -19%; }
+
+/* 공통: 제품 상세 정보 */
+.info { display: grid; grid-template-columns: calc(384 * var(--u)) minmax(0, 1fr); gap: calc(128 * var(--u)); padding: calc(96 * var(--u) + var(--section-padding-extra)) calc(176 * var(--u)); background: #000; color: #fff; }
+.infoTitle .subtitle { color: #fff; font-size: calc(48 * var(--u)); font-weight: 600; line-height: calc(56 * var(--u)); letter-spacing: -.03em; }
+.infoTitle p.copy { margin-top: calc(16 * var(--u)); color: rgb(255 255 255 / .5); font-size: calc(16 * var(--u)); line-height: 1.5; letter-spacing: 0; }
+.infoDropdown { display: flex; min-width: 0; flex-direction: column; gap: calc(16 * var(--u)); }
+.infoItem { min-width: 0; }
+.infoHeader { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: calc(72 * var(--u)); padding-bottom: calc(16 * var(--u)); list-style: none; cursor: pointer; }
+.infoHeader::-webkit-details-marker { display: none; }
+.infoHeader::marker { content: ""; }
+.infoLabel { font-size: calc(24 * var(--u)); font-weight: 500; line-height: calc(32 * var(--u)); }
+.infoIcon { display: grid; place-items: center; flex-shrink: 0; width: calc(24 * var(--u)); height: calc(24 * var(--u)); color: rgb(255 255 255 / .5); font-size: calc(28 * var(--u)); font-weight: 400; line-height: 1; transition: transform 150ms ease; }
+.infoItem[open] .infoIcon { transform: rotate(45deg); }
+.infoDetail { padding-block: 0 calc(24 * var(--u)); color: rgb(255 255 255 / .6); }
+.infoDetailCopy { font-size: calc(16 * var(--u)); line-height: 1.5; overflow-wrap: anywhere; }
+.infoDetailCopy + .infoDetailCopy { margin-top: calc(8 * var(--u)); }
+
+/* 공통: 모바일 제품 섹션 */
+@media (max-width: 767px) {
+    .carousel { min-height: 0; height: auto; padding-block: 120px; }
+    .carousel > .subtitle { margin: 0 24px 28px; font-size: var(--section-title-size); line-height: 1.3; }
+    .carouselTrack { gap: 16px; padding-inline: 24px; scroll-padding-inline: 24px; }
+    .carouselCard { flex-basis: calc(100vw - 48px); height: 480px; border-radius: 24px; }
+    .carouselCard .carouselImage { inset: 0; width: 100%; height: 100%; object-position: center; }
+    .carouselCard p.copy { font-size: 16px; line-height: 1.45; }
+    .carouselTextBox { right: 20px; left: 20px; width: auto; max-width: calc(100% - 40px); transform: none; }
+    .carouselCard--sensor .carouselTextBox { top: auto; right: 20px; bottom: 24px; left: 20px; width: auto; transform: none; padding: 16px; border-radius: 16px; background: rgb(255 255 255 / .8); }
+    .carouselCard--fabric .carouselTextBox { right: 20px; bottom: 24px; left: 20px; width: auto; transform: none; padding: 16px; border-radius: 16px; background: rgb(0 0 0 / .6); }
+    .carouselCard--battery .carouselTextBox { top: 24px; right: 20px; left: 20px; width: auto; transform: none; }
+    .carouselCard--watch .carouselTextBox { right: 20px; bottom: 24px; left: 20px; width: auto; padding: 16px; border-radius: 16px; background: rgb(0 0 0 / .6); }
+    .productSet { height: auto; padding: calc(64px + var(--section-padding-extra)) 24px; }
+    .productSet > .subtitle { margin-bottom: 24px; font-size: 28px; }
+    .productSetVisual { width: 100%; height: calc((100vw - 48px) * 400 / 1208); min-height: 150px; border-radius: 20px; }
+    .productSetSuit > img { left: 12.67%; top: 11.75%; width: 23.34%; height: 70.5%; }
+    .productSetDevice > img { left: 46.61%; top: 31.25%; width: 6.87%; height: 37.5%; }
+    .productSetDock > img { left: 68.09%; top: 27.16%; width: 8.62%; height: 48.59%; }
+    .productSetVisual figcaption { top: auto; bottom: 12px; font-size: 12px; white-space: nowrap; }
+    .productSetSuit figcaption { left: 24.3%; }
+    .productSetDevice figcaption { left: 49.92%; }
+    .productSetDock figcaption { left: 72.43%; }
+    .productSetCable { left: 67.63%; width: 9.52%; height: 7.75%; }
+    .productSetCable--top { top: .25%; }
+    .productSetCable--middle { top: 8%; }
+    .productSetCable--bottom { top: 15.75%; width: 9.53%; height: 11.41%; }
+    .bluetooth .text, .slogan .text, .battery .text { width: 100%; gap: 24px; }
+    .bluetooth .subtitle, .slogan .subtitle, .battery .subtitle, .exAi .subtitle { font-size: var(--section-title-size, 28px); line-height: 1.35; }
+    .bluetooth p.copy, .slogan p.copy, .battery p.copy, .exAi p.copy { font-size: 16px; line-height: 1.5; }
+    .bluetooth p.copy br, .slogan p.copy br, .battery p.copy br, .exAi p.copy br { display: none; }
+    .bluetooth { padding: calc(96px + var(--section-padding-extra)) 24px calc(72px + var(--section-padding-extra)); }
+    .bluetoothImage { width: 260px; height: 48px; margin-top: 40px; }
+    .connectionDiagram { transform: translateX(-50%) scale(.8); }
+    .slogan { padding-inline: 16px; }
+    .sloganContainer { height: auto; min-height: 560px; padding: 48px 24px; border-radius: 24px; }
+    .battery { padding-top: calc(72px + var(--section-padding-extra)); }
+    .batteryImage { width: 100%; height: auto; margin-top: 16px; }
+    .exAi { gap: 32px; padding: calc(96px + var(--section-padding-extra)) 24px; }
+    .exAiVideo { width: 240px; height: 240px; margin-bottom: calc(-64px / 3); }
+    .exAi > .subtitle { width: 100%; font-size: 32px; }
+    .info { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: calc(64px + var(--section-padding-extra)) 24px; }
+    .infoTitle .subtitle { font-size: 32px; line-height: 1.3; }
+    .infoTitle p.copy { margin-top: 16px; font-size: 16px; }
+    .infoDropdown { gap: 8px; }
+    .infoHeader { min-height: 64px; padding-bottom: 12px; }
+    .infoLabel { font-size: 20px; line-height: 32px; }
+    .infoIcon { width: 24px; height: 24px; font-size: 28px; }
+    .infoDetail { padding-bottom: 24px; }
+    .infoDetailCopy { font-size: 16px; }
+    .infoDetailCopy + .infoDetailCopy { margin-top: 8px; }
+}
