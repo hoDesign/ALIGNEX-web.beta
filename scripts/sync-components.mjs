@@ -9,7 +9,7 @@ const pages = {
     mainPage: {
         pageTitle: 'ALIGNEX — 나를 위한 운동',
         description: '나에게 맞는 운동을 제안하는 ALIGNEX. 일상복처럼 간편한 기기와 맞춤 운동 경험을 만나보세요.',
-        heroImage: './img/JPG/인물클로즈업.jpg',
+        heroImage: './img/JPG/인물클로즈업.jpg',
         heroTitle: 'ALIGNEX',
         heroCopy: '헬스케어의 새로운 패러다임',
         heroSecondaryHref: './application.html',
