@@ -1,5 +1,5 @@
 /* 공통: 제품 캐러셀 */
-.carousel { min-height: calc(1080 * var(--u) + var(--section-padding-extra) * 2); padding-block: 120px; overflow: hidden; background: #f7f7f7; color: var(--ink); }
+.carousel { min-height: calc(1080 * var(--u) + var(--section-padding-extra) * 2); padding-block: calc(120 * var(--desktop-px)); overflow: hidden; background: #f7f7f7; color: var(--ink); }
 .carousel { position: relative; }
 .carousel::after { content: ""; position: absolute; inset: auto 0 0; z-index: 3; height: calc(var(--carousel-exit-progress, 0) * 100%); background: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / .15) 25%, rgb(0 0 0 / .65) 65%, #000 100%); pointer-events: none; }
 .carousel > .subtitle { margin: 0 calc(180 * var(--u)) calc(20 * var(--u)); font-size: var(--section-title-size); font-weight: 500; line-height: 1.5; letter-spacing: -.03em; }
@@ -20,9 +20,9 @@
 .carouselCard--battery .carouselTextBox { top: calc(60 * var(--u)); left: 50%; width: calc(1000 * var(--u)); transform: translateX(-50%); text-align: center; }
 .carouselCard--watch { color: #fff; }
 .carouselCard--watch .carouselTextBox { right: calc(60 * var(--u)); bottom: calc(60 * var(--u)); width: calc(700 * var(--u)); text-align: right; }
-.carouselControls { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: 16px; height: 56px; margin-top: 24px; }
+.carouselControls { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: calc(16 * var(--desktop-px)); height: calc(56 * var(--desktop-px)); margin-top: calc(24 * var(--desktop-px)); }
 /* 캐러셀 제어: 화면 하단에서 등장한 뒤 카드 아래 원래 위치에 안착 */
-.carouselControls.is-scroll-managed { transform: translateY(var(--controls-offset, 0px)); translate: 0 32px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 360ms ease, translate 480ms cubic-bezier(.22, 1, .36, 1); }
+.carouselControls.is-scroll-managed { transform: translateY(var(--controls-offset, 0px)); translate: 0 calc(32 * var(--desktop-px)); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 360ms ease, translate 480ms cubic-bezier(.22, 1, .36, 1); }
 .carouselControls.is-scroll-managed.is-visible { translate: 0 0; opacity: 1; visibility: visible; }
 .carouselControls.is-scroll-managed.is-visible > * { pointer-events: auto; }
 
@@ -52,15 +52,15 @@
 .bluetooth .subtitle, .slogan .subtitle, .battery .subtitle, .exAi .subtitle { width: 100%; color: #fff; font-size: var(--section-title-size, calc(40 * var(--u))); font-weight: 800; line-height: 1.35; letter-spacing: 0; }
 .bluetooth p.copy, .slogan p.copy, .battery p.copy, .exAi p.copy, .smartWatch p.copy { width: 100%; color: rgb(255 255 255 / .5); font-size: calc(24 * var(--u)); font-weight: 400; line-height: 1.35; letter-spacing: 0; }
 .bluetooth .highlight, .slogan .highlight, .battery .highlight, .exAi .highlight { color: #fff; }
-.bluetooth { padding: calc(240 * var(--u) + var(--section-padding-extra)) 24px calc(180 * var(--u) + var(--section-padding-extra)); }
+.bluetooth { padding: calc(240 * var(--u) + var(--section-padding-extra)) calc(24 * var(--desktop-px)) calc(180 * var(--u) + var(--section-padding-extra)); }
 .bluetoothImage { position: relative; width: calc(324 * var(--u)); height: calc(59 * var(--u)); margin-top: calc(64 * var(--u)); }
 .slogan { padding-inline: calc(60 * var(--u)); }
 .sloganContainer { position: relative; display: grid; place-items: center; width: 100%; height: calc(800 * var(--u)); overflow: hidden; border-radius: calc(40 * var(--u)); isolation: isolate; }
 .sloganContainer > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
 .sloganContainer::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(0 0 0 / .75); }
-.battery { padding: calc(180 * var(--u) + var(--section-padding-extra)) 24px var(--section-padding-extra); }
+.battery { padding: calc(180 * var(--u) + var(--section-padding-extra)) calc(24 * var(--desktop-px)) var(--section-padding-extra); }
 .batteryImage { width: calc(856 * var(--u)); height: calc(315 * var(--u)); max-width: 100%; object-fit: contain; }
-.exAi { gap: calc(48 * var(--u)); padding: 200px 24px; }
+.exAi { gap: calc(48 * var(--u)); padding: calc(200 * var(--desktop-px)) calc(24 * var(--desktop-px)); }
 .exAiVideo { width: calc(300 * var(--u)); height: calc(300 * var(--u)); margin-bottom: calc(-32 * var(--u)); object-fit: contain; }
 .exAi > .subtitle, .exAi > p.copy { width: calc(800 * var(--u)); max-width: 100%; }
 .exAi > .subtitle { font-size: calc(48 * var(--u)); }
@@ -83,7 +83,7 @@
 .infoTitle p.copy { margin-top: calc(16 * var(--u)); color: rgb(255 255 255 / .5); font-size: calc(16 * var(--u)); line-height: 1.5; letter-spacing: 0; }
 .infoDropdown { display: flex; min-width: 0; flex-direction: column; gap: calc(16 * var(--u)); }
 .infoItem { min-width: 0; }
-.infoHeader { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: calc(72 * var(--u)); padding-bottom: calc(16 * var(--u)); list-style: none; cursor: pointer; }
+.infoHeader { display: flex; align-items: center; justify-content: space-between; gap: calc(24 * var(--desktop-px)); min-height: calc(72 * var(--u)); padding-bottom: calc(16 * var(--u)); list-style: none; cursor: pointer; }
 .infoHeader::-webkit-details-marker { display: none; }
 .infoHeader::marker { content: ""; }
 .infoLabel { font-size: calc(24 * var(--u)); font-weight: 500; line-height: calc(32 * var(--u)); }

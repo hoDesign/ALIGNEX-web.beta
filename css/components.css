@@ -43,17 +43,23 @@
 
 :root {
     --u: calc(100vw / 1920);
+    --desktop-px: 1px;
     --s: min(var(--u), calc(100svh / 1080));
     --ink: #191a1c;
     --copy-ink: #1a2438;
     --light: #e9eff7;
     --accent: #e7fe57;
-    --section-padding-extra: 120px;
+    --section-padding-extra: calc(120 * var(--desktop-px));
     color: var(--ink);
     font-family: Pretendard, sans-serif;
     font-synthesis: none;
     font-weight: 400;
     background: #000;
+}
+
+/* 공통: FHD를 넘는 화면에서는 고정 px 여백과 컨트롤도 같은 비율로 확대 */
+@media (min-width: 1921px) {
+    :root { --desktop-px: var(--u); font-size: calc(16 * var(--desktop-px)); }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -70,7 +76,7 @@ img, video { display: block; }
 img { max-width: 100%; }
 button, a { -webkit-tap-highlight-color: transparent; }
 [hidden] { display: none !important; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+:focus-visible { outline: calc(2 * var(--desktop-px)) solid var(--accent); outline-offset: calc(5 * var(--desktop-px)); }
 
 .sectionViewport { height: 100vh; height: 100svh; position: relative; }
 :where(main > section).sectionViewport { height: calc(100svh + var(--section-padding-extra) * 2); }
@@ -82,7 +88,7 @@ p.copy { color: var(--copy-ink); font-size: calc(24 * var(--s)); font-weight: 40
 .purchaseButton { background: rgb(0 0 0 / .5); }
 .downloadButton { background: #0071e3; }
 .button:hover { filter: brightness(1.08); }
-.skipLink { position: fixed; top: 12px; left: 12px; z-index: 100; padding: 12px 18px; background: #000; color: #fff; transform: translateY(-160%); }
+.skipLink { position: fixed; top: calc(12 * var(--desktop-px)); left: calc(12 * var(--desktop-px)); z-index: 100; padding: calc(12 * var(--desktop-px)) calc(18 * var(--desktop-px)); background: #000; color: #fff; transform: translateY(-160%); }
 .skipLink:focus { transform: translateY(0); }
 
 .siteNav { position: fixed; top: 0; left: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; width: 100%; height: calc(90 * var(--u)); padding-inline: calc(180 * var(--u)); color: #191a1c; transition: transform 220ms ease, visibility 220ms; }
@@ -109,7 +115,7 @@ p.copy { color: var(--copy-ink); font-size: calc(24 * var(--s)); font-weight: 40
 .siteNavBrandOverlay { position: fixed; z-index: 51; pointer-events: none; transition: transform 220ms ease, visibility 220ms; }
 .siteNavBrandOverlay.is-scroll-hidden { transform: translateY(var(--nav-logo-hide-y)); visibility: hidden; }
 
-.motionToggle, .motionSkip { position: absolute; z-index: 5; right: calc(40 * var(--s)); bottom: calc(32 * var(--s)); padding: 10px 16px; border: 1px solid rgb(255 255 255 / .4); border-radius: 24px; background: rgb(0 0 0 / .7); color: #fff; font-size: max(12px, calc(14 * var(--s))); line-height: 1.4; opacity: 0; transition: opacity 150ms ease; }
+.motionToggle, .motionSkip { position: absolute; z-index: 5; right: calc(40 * var(--s)); bottom: calc(32 * var(--s)); padding: calc(10 * var(--desktop-px)) calc(16 * var(--desktop-px)); border: calc(1 * var(--desktop-px)) solid rgb(255 255 255 / .4); border-radius: calc(24 * var(--desktop-px)); background: rgb(0 0 0 / .7); color: #fff; font-size: max(calc(12 * var(--desktop-px)), calc(14 * var(--s))); line-height: 1.4; opacity: 0; transition: opacity 150ms ease; }
 .motionToggle:focus-visible, .motionSkip:focus-visible, .valuesStage:hover .motionToggle, .process:hover .motionSkip { opacity: 1; }
 
 .gradientAnimation { color: #fff; background-color: #fff; background-image: linear-gradient(110deg, #fff 44%, #f5ffc0 48%, #ecfe79 52%, #fff 56%); background-size: 300% 100%; background-position: 100% 50%; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: none; }
@@ -197,9 +203,9 @@ p.copy { color: var(--copy-ink); font-size: calc(24 * var(--s)); font-weight: 40
 .personaTextBox .highlight { color: #fff; }
 .personaTextBox .dimmed { color: rgb(255 255 255 / .25); }
 .personaButtons { position: absolute; z-index: 3; left: calc(120 * var(--s)); top: 50%; display: flex; flex-direction: column; align-items: flex-start; gap: calc(12 * var(--s)); width: calc(291 * var(--s)); transform: translateY(-50%); }
-.questionButton { display: flex; align-items: center; gap: calc(12 * var(--s)); width: 100%; min-height: calc(60 * var(--s)); padding: calc(15 * var(--s)) calc(20 * var(--s)) calc(15 * var(--s)) calc(15 * var(--s)); border: 1px solid transparent; border-radius: calc(30 * var(--s)); color: #fff; background: rgb(0 0 0 / .8); font-size: calc(20 * var(--s)); font-weight: 400; line-height: 1.5; white-space: nowrap; text-align: left; transition: opacity 150ms ease, background-color 150ms ease, border-color 150ms ease; }
+.questionButton { display: flex; align-items: center; gap: calc(12 * var(--s)); width: 100%; min-height: calc(60 * var(--s)); padding: calc(15 * var(--s)) calc(20 * var(--s)) calc(15 * var(--s)) calc(15 * var(--s)); border: calc(1 * var(--desktop-px)) solid transparent; border-radius: calc(30 * var(--s)); color: #fff; background: rgb(0 0 0 / .8); font-size: calc(20 * var(--s)); font-weight: 400; line-height: 1.5; white-space: nowrap; text-align: left; transition: opacity 150ms ease, background-color 150ms ease, border-color 150ms ease; }
 .buttonIcon { width: calc(28 * var(--s)); height: calc(28 * var(--s)); flex-shrink: 0; object-fit: contain; transition: transform 150ms ease; }
-.questionButton.is-active { border-color: rgb(255 255 255 / .35); background: linear-gradient(145deg, rgb(255 255 255 / .22), rgb(255 255 255 / .06)); box-shadow: inset 0 1px 1px rgb(255 255 255 / .25), inset 0 -1px 1px rgb(var(--persona-black-rgb, 0 0 0) / .35); backdrop-filter: blur(calc(4 * var(--s))); -webkit-backdrop-filter: blur(calc(4 * var(--s))); }
+.questionButton.is-active { border-color: rgb(255 255 255 / .35); background: linear-gradient(145deg, rgb(255 255 255 / .22), rgb(255 255 255 / .06)); box-shadow: inset 0 calc(1 * var(--desktop-px)) calc(1 * var(--desktop-px)) rgb(255 255 255 / .25), inset 0 calc(-1 * var(--desktop-px)) calc(1 * var(--desktop-px)) rgb(var(--persona-black-rgb, 0 0 0) / .35); backdrop-filter: blur(calc(4 * var(--s))); -webkit-backdrop-filter: blur(calc(4 * var(--s))); }
 .questionButton.is-active .buttonIcon { transform: rotate(45deg); }
 .questionButton.dimmed { opacity: .5; }
 .questionButton.dimmed:hover, .questionButton.dimmed:focus-visible { opacity: 1; }
@@ -263,23 +269,23 @@ p.copy { color: var(--copy-ink); font-size: calc(24 * var(--s)); font-weight: 40
 }
 
 /* 공통: 3000ms 진행 인디케이터와 재생 제어 */
-.playbackIndicators { display: flex; align-items: center; height: 56px; padding-inline: 19px; border-radius: 28px; background: #232325; transition: background-color 160ms ease; }
-.playbackIndicator { display: grid; place-items: center; flex: 0 0 20px; width: 20px; height: 44px; padding: 0; border: 0; border-radius: 22px; background: transparent; transition: flex-basis 600ms cubic-bezier(.4, 0, .2, 1), width 600ms cubic-bezier(.4, 0, .2, 1); }
-.playbackIndicator.is-active { flex-basis: 56px; width: 56px; }
-.playbackIndicatorTrack { display: block; width: calc(100% - 12px); height: 8px; overflow: hidden; border-radius: 4px; background: #727274; }
+.playbackIndicators { display: flex; align-items: center; height: calc(56 * var(--desktop-px)); padding-inline: calc(19 * var(--desktop-px)); border-radius: calc(28 * var(--desktop-px)); background: #232325; transition: background-color 160ms ease; }
+.playbackIndicator { display: grid; place-items: center; flex: 0 0 calc(20 * var(--desktop-px)); width: calc(20 * var(--desktop-px)); height: calc(44 * var(--desktop-px)); padding: 0; border: 0; border-radius: calc(22 * var(--desktop-px)); background: transparent; transition: flex-basis 600ms cubic-bezier(.4, 0, .2, 1), width 600ms cubic-bezier(.4, 0, .2, 1); }
+.playbackIndicator.is-active { flex-basis: calc(56 * var(--desktop-px)); width: calc(56 * var(--desktop-px)); }
+.playbackIndicatorTrack { display: block; width: calc(100% - calc(12 * var(--desktop-px))); height: calc(8 * var(--desktop-px)); overflow: hidden; border-radius: calc(4 * var(--desktop-px)); background: #727274; }
 .playbackIndicatorFill { display: block; width: 100%; height: 100%; border-radius: inherit; background: #fff; transform: scaleX(0); transform-origin: left center; }
 .playbackIndicator.is-active .playbackIndicatorFill { transform: scaleX(var(--playback-progress, 0)); }
-.playbackButton { display: grid; place-items: center; flex: 0 0 56px; width: 56px; height: 56px; padding: 0; border: 0; border-radius: 50%; background: #232325; color: #fff; transition: background-color 160ms ease; }
+.playbackButton { display: grid; place-items: center; flex: 0 0 calc(56 * var(--desktop-px)); width: calc(56 * var(--desktop-px)); height: calc(56 * var(--desktop-px)); padding: 0; border: 0; border-radius: 50%; background: #232325; color: #fff; transition: background-color 160ms ease; }
 .playbackButton:hover, .playbackIndicators:hover { background: #343436; }
 @media (prefers-reduced-motion: reduce) {
     .playbackButton, .playbackIndicators, .playbackIndicator { transition: none; }
 }
-.playbackPauseIcon { display: flex; gap: 4px; }
-.playbackPauseIcon::before, .playbackPauseIcon::after { content: ""; width: 6px; height: 18px; border-radius: 4px; background: #fff; }
-.playbackPlayIcon { width: 0; height: 0; margin-left: 4px; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #fff; }
-.playbackRestartIcon { display: block; width: 24px; height: 24px; }
+.playbackPauseIcon { display: flex; gap: calc(4 * var(--desktop-px)); }
+.playbackPauseIcon::before, .playbackPauseIcon::after { content: ""; width: calc(6 * var(--desktop-px)); height: calc(18 * var(--desktop-px)); border-radius: calc(4 * var(--desktop-px)); background: #fff; }
+.playbackPlayIcon { width: 0; height: 0; margin-left: calc(4 * var(--desktop-px)); border-top: calc(10 * var(--desktop-px)) solid transparent; border-bottom: calc(10 * var(--desktop-px)) solid transparent; border-left: calc(16 * var(--desktop-px)) solid #fff; }
+.playbackRestartIcon { display: block; width: calc(24 * var(--desktop-px)); height: calc(24 * var(--desktop-px)); }
 .playbackRestartIcon svg { display: block; width: 100%; height: 100%; }
-.playbackStatus { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.playbackStatus { position: absolute; width: calc(1 * var(--desktop-px)); height: calc(1 * var(--desktop-px)); overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* 공통: 제목 크기는 sectionTitleLarge 클래스로 선택 */
 .sectionTitleLarge { --section-title-size: calc(60 * var(--u)); }

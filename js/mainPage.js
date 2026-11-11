@@ -3,7 +3,7 @@
 
   const UI = window.ALIGNEXUI;
   if (!UI) return;
-  const { clamp, motion, animate, play, PanelSwitcher } = UI;
+  const { clamp, desktopScale, motion, animate, play, PanelSwitcher } = UI;
   const comfort = document.querySelector('#comfort');
   const process = document.querySelector('#process');
   const processVideo = process.querySelector('.processVideo');
@@ -287,7 +287,7 @@
     const bottom = parseFloat(getComputedStyle(valuesControls).bottom) || 0;
     const naturalBottom = rect.bottom - bottom;
     valuesControlsVisible = rect.top <= innerHeight * (valuesControlsVisible ? .8 : .7) && naturalBottom > 0;
-    const offset = Math.min(0, innerHeight - 24 - naturalBottom);
+    const offset = Math.min(0, innerHeight - 24 * desktopScale() - naturalBottom);
     valuesControls.style.setProperty('--values-controls-offset', `${offset}px`);
     valuesControls.classList.add('is-scroll-managed');
     valuesControls.classList.toggle('is-visible', valuesControlsVisible);
@@ -299,7 +299,7 @@
     scrollFrame = 0;
     const y = window.scrollY;
     const forward = y >= previousY;
-    const exitStart = geometry.comfort + 120;
+    const exitStart = geometry.comfort + 120 * desktopScale();
     const exitProgress = clamp((y - exitStart) / Math.max(1, geometry.process - exitStart));
     comfort.style.setProperty('--exit-progress', exitProgress.toFixed(4));
     if (processState.status === 'idle' && y >= geometry.process - 1 && previousY < geometry.process + 1 && forward) {

@@ -2,6 +2,7 @@
   'use strict';
 
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const desktopScale = () => Math.max(1, window.innerWidth / 1920);
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   const subscribers = new Set();
   const motion = {
@@ -332,7 +333,7 @@
       // 작은 역방향 이동·버튼 포커스 이동에서는 노출 상태를 유지해 깜빡임 방지.
       const revealLine = innerHeight * (this.controlsVisible ? .8 : .7);
       const visible = trackRect.top <= revealLine && naturalBottom > 0;
-      const offset = Math.min(0, innerHeight - 24 - naturalBottom);
+      const offset = Math.min(0, innerHeight - 24 * desktopScale() - naturalBottom);
       this.controls.style.setProperty('--controls-offset', `${offset}px`);
       this.controls.classList.toggle('is-visible', visible);
       this.controls.inert = !visible;
@@ -611,7 +612,7 @@
 
   Object.defineProperty(window, 'ALIGNEXUI', {
     value: Object.freeze({
-      clamp, motion, animate, play, AmbientMedia, PanelSwitcher, PersonaController, CarouselController,
+      clamp, desktopScale, motion, animate, play, AmbientMedia, PanelSwitcher, PersonaController, CarouselController,
       ambientMedia,
       getPersonaController: root => personaControllers.get(root),
       getCarouselController: root => carouselControllers.get(root)

@@ -9,24 +9,24 @@
 .applicationPhone { position: absolute; left: calc(1049 * var(--u)); bottom: 0; width: calc(580 * min(var(--u), calc(100vh / 1080))); height: calc(967 * min(var(--u), calc(100vh / 1080))); overflow: hidden; }
 .applicationPhone img { position: absolute; left: -68.41%; top: 0; width: 221.53%; height: 100%; max-width: none; }
 .storeActions { position: relative; display: flex; align-items: flex-end; gap: calc(12 * var(--u)); }
-.storeButton { display: inline-flex; align-items: center; justify-content: center; gap: calc(8 * var(--u)); width: calc(548 * var(--u)); min-height: calc(55 * var(--u)); padding: calc(12 * var(--u)); border: 1px solid rgb(180 180 180 / .3); border-radius: calc(8 * var(--u)); background: #0071e3; color: #fff; font-size: calc(20 * var(--u)); font-weight: 400; line-height: 1.5; letter-spacing: -.02em; white-space: nowrap; }
-.storeButton img { flex-shrink: 0; object-fit: contain; }
+.storeButton { display: inline-flex; align-items: center; justify-content: center; gap: calc(8 * var(--u)); width: calc(548 * var(--u)); min-height: calc(55 * var(--u)); padding: calc(12 * var(--u)); border: calc(1 * var(--desktop-px)) solid rgb(180 180 180 / .3); border-radius: calc(8 * var(--u)); background: #0071e3; color: #fff; font-size: calc(20 * var(--u)); font-weight: 400; line-height: 1.5; letter-spacing: -.02em; white-space: nowrap; }
+.storeButton img { flex-shrink: 0; width: calc(16 * var(--desktop-px)); height: calc(20 * var(--desktop-px)); object-fit: contain; }
 .storeButton:disabled { cursor: default; }
 .downloadPlaceholder { position: absolute; left: calc(560 * var(--u)); bottom: 0; width: calc(122 * var(--u)); height: calc(122 * var(--u)); padding: 0; border-radius: calc(8 * var(--u)); background: #fff; object-fit: contain; image-rendering: pixelated; }
 
 /* 페이지: 어플리케이션 공통 섹션 배치 */
 .applicationPage .smartphone { min-height: 0; gap: calc(32 * var(--u)); padding-block: calc(240 * var(--u) + var(--section-padding-extra)) calc(180 * var(--u) + var(--section-padding-extra)); }
 .applicationPage .smartphone .text { gap: calc(32 * var(--u)); }
-.smartWatch { display: flex; flex-direction: column; align-items: center; gap: calc(64 * var(--u)); padding-inline: 24px; background: #000; color: #fff; text-align: center; }
-.smartWatchVisual { display: flex; align-items: center; gap: 20px; width: max-content; max-width: 100%; overflow: visible; }
-.smartWatchImage { display: block; flex-shrink: 0; width: auto; height: 500px; max-width: none; object-fit: contain; }
-.smartWatchImage.is-watch-pending { opacity: 0; transform: translateY(32px); }
+.smartWatch { display: flex; flex-direction: column; align-items: center; gap: calc(64 * var(--u)); padding-inline: calc(24 * var(--desktop-px)); background: #000; color: #fff; text-align: center; }
+.smartWatchVisual { display: flex; align-items: center; gap: calc(20 * var(--desktop-px)); width: max-content; max-width: 100%; overflow: visible; }
+.smartWatchImage { display: block; flex-shrink: 0; width: auto; height: calc(500 * var(--desktop-px)); max-width: none; object-fit: contain; }
+.smartWatchImage.is-watch-pending { opacity: 0; transform: translateY(calc(32 * var(--desktop-px))); }
 .smartWatchImage.is-watch-revealed { opacity: 1; transform: translateY(0); transition: opacity 1400ms ease var(--watch-delay, 0ms), transform 1700ms cubic-bezier(.22, 1, .36, 1) var(--watch-delay, 0ms); }
 @media (prefers-reduced-motion: reduce) {
     .smartWatchImage.is-watch-pending { opacity: 1; transform: none; transition: none; }
 }
 .smartWatch .text { display: flex; flex-direction: column; align-items: center; gap: calc(32 * var(--u)); width: calc(800 * var(--u)); max-width: 100%; }
-.smartWatch .subtitle { width: 100%; color: #fff; font-size: 48px; font-weight: 800; line-height: 1.35; letter-spacing: 0; }
+.smartWatch .subtitle { width: 100%; color: #fff; font-size: calc(48 * var(--desktop-px)); font-weight: 800; line-height: 1.35; letter-spacing: 0; }
 .smartWatch p.copy { width: 100%; color: rgb(255 255 255 / .5); font-size: calc(24 * var(--u)); line-height: 1.35; letter-spacing: 0; }
 .smartWatch .highlight { color: #fff; }
 @media (max-width: 1000px) {
